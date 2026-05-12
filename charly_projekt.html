@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Charly's Abenteuer Website</title>
+
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+/* Farben */
+:root {
+    --blau: #1e90ff;
+    --braun: #cf8b5bd0;
+}
+
+/* HEADER */
+header {
+    background-color: var(--blau);
+    color: white;
+    padding: 20px;
+    text-align: center;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+nav a {
+    color: white;
+    margin: 0 15px;
+    text-decoration: none;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+/* FOOTER */
+footer {
+    background-color: var(--blau);
+    color: rgb(250, 253, 250);
+    text-align: center;
+    font-size: 14px;
+    box-shadow: 0 -4px 12px rgba(0,0,0,0.1);
+}
+
+footer a {
+    color: rgb(247, 246, 246);
+    text-decoration: none;
+    font-weight: bold;
+    margin-left: 15px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+footer a:hover {
+    text-decoration: underline;
+    color: #f9f9f9;
+}
+
+/* FOOTER */
+footer {
+    background-color: var(--blau);
+    color: rgb(255, 255, 255);
+    text-align: center;
+    padding: 20px;
+    font-size: 14px;
+    box-shadow: 0 -4px 12px rgba(0,0,0,0.1);
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+
+    footer {
+        font-size: 13px;
+        padding: 15px;
+    }
+
+    footer a {
+        display: block;
+        margin-top: 10px;
+        margin-left: 0;
+    }
+}
+
+
+
+/* LOGO */
+.logo {
+    position: fixed;
+    top: 15px;
+    left: 20px;
+    width: 100px;
+    z-index: 2000;
+}
+
+/* MAIN */
+main {
+    margin-top: 140px;
+}
+
+/* SECTIONS */
+section {
+    padding: 40px 20px 60px;
+    display: none;
+    min-height: 100vh;
+}
+
+section.active {
+    display: block;
+}
+
+/* INTRO BOX */
+.intro-box {
+    max-width: 900px;
+    margin: 30px auto;
+    background-color: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+    line-height: 1.6;
+}
+
+/* NEWS */
+.news-container {
+    max-width: 900px;
+    margin: 40px auto;
+}
+
+.news-card {
+    background: white;
+    padding: 20px;
+    margin-bottom: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.news-title {
+    color: var(--blau);
+}
+
+/* STECKBRIEF */
+.steckbrief-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin: 40px auto;
+    max-width: 1100px;
+}
+
+.steckbrief-card {
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    width: 280px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.steckbrief-card img {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.steckbrief-info {
+    text-align: left;
+}
+
+/* PRODUKTE */
+.produkte-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin: 40px auto;
+    max-width: 1200px;
+}
+
+.produkt-card {
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+}
+
+.produkt-card img {
+    width: 100%;
+    max-width: 220px;
+    height: auto;
+}
+
+/* BUTTON */
+button {
+    background: var(--blau);
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+/* KONTAKT */
+.kontakt-wrapper {
+    display: flex;
+    justify-content: center;
+    margin: 40px auto;
+}
+
+.kontakt-card {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    max-width: 800px;
+}
+
+/* MAP */
+.map-container iframe {
+    width: 100%;
+    height: 400px;
+    border-radius: 15px;
+}
+
+/* VIDEO */
+.video-wrapper-large video {
+    width: 100%;
+    border-radius: 15px;
+}
+
+/* TITEL */
+h1 {
+    text-align: center;
+}
+
+/* BILDER RESPONSIVE */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* FIX IMAGE CLASS */
+.responsive-img {
+    width: 100%;
+    max-width: 800px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+/* ================= MOBILE ================= */
+@media (max-width: 768px) {
+
+    header h1 {
+        font-size: 20px;
+    }
+
+    nav a {
+        display: inline-block;
+        margin: 5px 8px;
+        font-size: 14px;
+    }
+
+    main {
+        margin-top: 180px;
+    }
+
+    .intro-box {
+        margin: 20px 10px;
+        padding: 20px;
+    }
+
+    .logo {
+        width: 60px;
+        height: 60px;
+        top: 10px;
+        left: 10px;
+    }
+
+    .steckbrief-container {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+/*Produkte Anfang*/
+
+.produkte-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin: 40px auto;
+    max-width: 1200px;
+}
+
+.produkt-card {
+    background-color: #ffffff;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.produkt-card img {
+    width: 100%;
+    max-width: 220px;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.produkt-card h2 {
+    margin: 10px 0;
+    color: var(--blau);
+}
+
+.produkt-card p {
+    font-size: 14px;
+    line-height: 1.5;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.produkt-card button {
+    background-color: var(--blau);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.produkt-card button:hover {
+    background-color: #005bb5; /* dunkleres Blau bei Hover */
+}
+/*Produkte Ende*/
+
+/*Kontakte Anfgang*/
+
+.kontakt-wrapper {
+    display: flex;
+    justify-content: center;
+    margin: 40px auto;
+    max-width: 900px;
+}
+
+.kontakt-card {
+    background-color: white;
+    padding: 30px;
+    border-radius: 15px;
+    width: 100%;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+}
+
+.kontakt-card h2 {
+    color: var(--blau);
+    margin-bottom: 20px;
+}
+
+.kontakt-card p {
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.kontakt-card a {
+    color: var(--blau);
+    text-decoration: none;
+}
+
+.kontakt-card a:hover {
+    text-decoration: underline;
+}
+
+.kontakt-hinweis {
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.kontakt-card hr {
+    margin: 20px 0;
+    border: none;
+    border-top: 1px solid #ddd;
+}
+
+/* Map */
+.map-container {
+    margin: 40px auto;
+    max-width: 900px;
+}
+
+.map-container iframe {
+    width: 100%;
+    height: 400px;
+    border: 0;
+    border-radius: 15px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+}
+
+
+/*Kontakte Ende*/
+
+/*H1 formatieren Anfang*/
+
+#seite1 h1,
+#seite2 h1,
+#seite3 h1,
+#seite4 h1,
+#seite5 h1,
+#seite6 h1,
+#seite7 h1,
+#seite8 h1 {
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 30px;
+    color: #000000;
+}
+/*H1 formatieren Ende*/
+
+/* Wrapper für großes Video Anfang*/
+.video-wrapper-large {
+    margin-top: 20px;
+    width: 100%;
+    max-width: 1200px;   /* maximale Breite */
+    margin-left: auto;
+    margin-right: auto;   /* zentriert */
+}
+
+.video-wrapper-large video {
+    width: 100%;
+    height: auto;         /* Höhe passt sich proportional an */
+    border-radius: 15px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+}
+
+/* Wrapper für großes Video Ende*/
+
+
+#seite1 { background-color: #f1dec7c0; }
+#seite2 { background-color: #f1dec7c0; }
+#seite3 { background-color: #f1dec7c0; }
+#seite4 { background-color: #f1dec7c0; }
+#seite5 {background-color: #f1dec7c0;}
+#seite6 {background-color: #f1dec7c0;}
+#seite7 {background-color: #f1dec7c0;}
+#seite8 {background-color: #f1dec7c0;}
+
+
+</style>
+</head>
+
+<body>
+
+<!-- LOGO -->
+<a onclick="showPage('seite1')">
+  <img src="Charly & JuCo Logo.png" alt="Logo" class="logo" style="width:10%; height:10%;">
+</a>
+
+
+
+
+
+<header>
+    <h1><strong>Charly's Abenteuer</strong></h1>
+    <nav>
+        <a onclick="showPage('seite1')">Start</a>
+        <a onclick="showPage('seite2')">Über uns</a>
+        <a onclick="showPage('seite3')">Unsere Produkte</a>
+        <a onclick="showPage('seite4')">Kontakt</a>
+    </nav>
+</header>
+
+<main>
+
+<section id="seite1" class="active">
+    <h1>Willkommen bei Charly's Abenteuer</h1>
+    <div class="intro-box">
+
+    <p>
+        Hallo, wir sind drei Mädels aus der digBiz HAK Liezen und haben uns
+        einen großen Traum erfüllt: <span class="intro-highlight">
+        <br>Wir haben unser eigenes Kinderbuch verwirklicht!</span>
+    </p>
+
+    <p>
+        Die Arbeit daran hat uns unglaublich viel Freude bereitet und uns gezeigt,
+        wie schön es ist, eigene Geschichten zum Leben zu erwecken.
+    </p>
+
+    <p>
+        Nun möchten wir diesen Traum noch weiter ausbauen und haben uns dazu
+        entschlossen, ein Spiel zu entwickeln, das perfekt zu unserem Buch passt.
+        Dabei steckt nicht nur unsere Kreativität, sondern auch unser ganzes
+        Herzblut in das Projekt.
+    </p>
+
+    <p>
+        Unser Ziel ist es, Kindern spielerisch Freude, Fantasie und spannende
+        Abenteuer zu vermitteln. Wir freuen uns darauf, unsere Geschichten und
+        Spiele mit möglichst vielen Menschen zu teilen.
+    </p>
+
+</div>
+
+    <!-- Hier starten die News -->
+<div class="news-container">
+    <h2>Neuigkeiten</h2>
+
+    <!-- NEWS 1 -->
+    <div class="news-card">
+        <div class="news-date">5. Mai 2026</div>
+        <h3 class="news-title">Charly geht jetzt online!</h3>
+        <p>
+            Wir haben es geschafft! Unser Kinderbuchprojekt erreicht ein neues Level, denn ab sofort gibt es auch ein
+            <br>eigenes Online-Spiel dazu. Darüber freuen wir uns riesig, denn in das Projekt ist viel Arbeit und Herzblut geflossen.
+            <br>Wir hoffen, euch gefällt das Spiel genauso gut wie uns und wünschen euch ganz viel Spaß beim Ausprobieren!
+        </p>
+    </div>
+
+    <!-- NEWS 2 -->
+    <div class="news-card">
+        <div class="news-date">20. Mai 2026</div>
+        <h3 class="news-title">Charly Trailer geht jetzt online!</h3>
+        <p>
+            Zu unserem Spiel gehört natürlich auch ein passender Trailer, und genau dieser ist jetzt online!
+            <br>Darin bekommt ihr einen ersten Einblick in die Welt von Charly und könnt sehen, was euch im Spiel erwartet.
+            <br>Wir freuen uns sehr, euch unser Projekt nun auch in bewegten Bildern präsentieren zu können.
+            <br>In den Trailer ist genauso viel Kreativität und Arbeit geflossen wie in das Spiel selbst.
+        </p>
+    </div>
+</div>
+<!-- News Ende -->
+
+
+<!-- Überschrift eingerückt wie Neuigkeiten -->
+<div class="news-container">
+    <h2>Zum Online Spiel</h2>
+</div>
+
+<!-- Dein bestehender Block bleibt gleich -->
+<div class="intro-box">
+
+    <h2>Spielübersicht – Charlys Abenteuer</h2>
+
+    <p>
+        In unserem Spiel begleitet ihr Charly auf eine spannende Reise voller
+        Abenteuer, Herausforderungen und Spaß. Dabei könnt ihr verschiedene
+        Aufgaben lösen, neue Welten entdecken und Charly Schritt für Schritt
+        helfen, seine Ziele zu erreichen.
+    </p>
+
+    <p>
+        Das Spiel verbindet Unterhaltung mit Kreativität und passt perfekt zu
+        unserem Kinderbuch. Unser Ziel ist es, Kindern Freude zu bereiten und
+        ihre Fantasie anzuregen.
+    </p>
+
+    <p>
+        Wir wünschen euch ganz viel Spaß beim Spielen und Entdecken!
+    </p>
+
+</div>
+
+<!-- VIDEO BEREICH -->
+<div class="news-container">
+
+    <h2>Spiel Trailer</h2>
+
+    <div class="video-wrapper-large">
+        <video controls>
+            <source src="charly-trailer.mp4" type="video/mp4">
+            Dein Browser unterstützt das Video-Tag nicht.
+        </video>
+    </div>
+
+</div>
+
+</section>
+
+
+<section id="seite2">
+    <h1>Unser Team</h1>
+  <div class="steckbrief-container">
+
+    <div class="steckbrief-card">
+        <img src="Angerer_Cora.jpg" alt="Cora">
+        <h3>Cora Angerer</h3>
+        <div class="steckbrief-info">
+            <p><strong>Alter:</strong> 18</p>
+            <p><strong>Aufgabe:</strong> Illustrationen & Trailer </p>
+            <p><strong>Lieblingsfarbe:</strong> Blau</p>
+            <p><strong>Hobby:</strong> Zeichnen, Lesen, sich um Charly und Freunde kümmern und spielen</p>
+            <p><strong>Lieblingsfach:</strong>Chemie</p>
+            <p><strong>Lebensmotto:</strong> It's nice to be important,<br> but more important to be nice.</p>
+        </div>
+    </div>
+
+    <div class="steckbrief-card">
+        <img src="Mayr_Carina.jpg" alt="Carina">
+        <h3>Carina Mayr</h3>
+        <div class="steckbrief-info">
+            <p><strong>Alter:</strong> 19</p>
+            <p><strong>Aufgabe:</strong> Programmierung</p>
+            <p><strong>Lieblingsfarbe:</strong> Grün</p>
+            <p><strong>Hobby:</strong> Lesen, Freunde treffen, E-Bass spielen</p>
+            <p><strong>Lieblingsfach:</strong> Englisch</p>
+            <p><strong>Lebensmotto:</strong> Aufgeben ist keine Option!</p>
+        </div>
+    </div>
+
+    <div class="steckbrief-card">
+        <img src="Seebacher_Julia.jpg" alt="Julia">
+        <h3>Julia Seebacher</h3>
+        <div class="steckbrief-info">
+            <p><strong>Alter:</strong> 18</p>
+            <p><strong>Aufgabe:</strong> Website einrichten & desingen</p>
+            <p><strong>Lieblingsfarbe:</strong> Rosa & Grün</p>
+            <p><strong>Hobby:</strong> Skifahren, Klettern, Motorradfahren, Fußball, Lesen</p>
+            <p><strong>Lieblingsfach:</strong>Geografie</p>
+            <p><strong>Lebensmotto:</strong> Wer kämpft, kann verlieren. Wer nicht kämpft, hat schon verloren.</p>
+<!-- Lebensmottos
+ Hoch hinaus, schnell unterwegs, immer für andere da.“
+„Abenteuer spüren, Menschen helfen, das Leben leben.“
+„Mutig klettern, frei fahren, mit Herz handeln.“
+„Sportlich, hilfsbereit, immer in Bewegung.“
+„Vom Berg bis zum Spielfeld – mit Leidenschaft dabei.“
+"Es gibt nur ein Gas, Vollgas"
+Herausforderungen annehmen, Gutes tun, Leidenschaft leben. 
+Sportlich, mutig, hilfsbereit – immer ich selbst.-->
+        </div>
+    </div>
+
+</div>
+
+    
+</section>
+
+<section id="seite3">
+
+    <h1>Unsere Produkte</h1>
+
+<div class="produkte-grid">
+
+  <!-- Spiel -->
+  <div class="produkt-card">
+  <img src="Cover.png" alt="Charly's Jump and Run">
+  <h2>Charly's Abenteuer</h2>
+  <p>
+    Ein Spiel das jedem Kind Freude bereitet und das ganz noch in Verbindung
+    mit einem Kinderbuch – das muss man doch mögen. Charly wird nun auch viele
+    Abenteuer online erleben und viel Spaß mit euch haben.
+  </p>
+
+ <button onclick="showPage('seite1')">
+  Alle weiteren Infos <br> auf der Startseite 
+</button>
+</div>
+
+<!--Buch1-->
+  <div class="produkt-card">
+  <img src="Ein Winter mit Charly nur Cover.jpg" alt="Ein Winter mit Charly">
+  <h2>Ein Winter mit Charly</h2>
+  <p>Charlys freche Abenteuer im Winter – Skipisten, Nachtspaziergänge und jede Menge Chaos!</p>
+
+  <button onclick="showPage('seite6')">
+    Weitere Infos
+  </button>
+</div>
+
+
+
+  <!-- Buch 2 -->
+  <div class="produkt-card">
+    <img src="Ein Frühling mit Charly nur Cover.jpg" alt="Ein Frühling mit Charly">
+    <h2>Ein Frühling mit Charly</h2>
+    <p>Neue Herausforderungen im Frühling und spannende Freundschaftsgeschichten mit Charly.</p>
+    
+    <button onclick="showPage('seite7')">
+    Weitere Infos
+    </button>
+
+  </div>
+
+  <!-- Merch -->
+  <div class="produkt-card">
+    <img src="Lesezeichen.png" alt="Merch von Charlys Abenteuer">
+    <h2>Merch</h2>
+    <p>Coole Produkte für kleine Fans: Lesezeichen, Stift, Rätselheft und mehr!</p>
+    
+    <button onclick="showPage('seite8')">
+    Weitere Infos
+    </button>
+
+  </div>
+
+</div>
+</section>
+
+<section id="seite4">
+
+    <h1>Kontakt</h1>
+
+    <div class="kontakt-wrapper">
+
+        <div class="kontakt-card">
+
+            <h2>Ideenfabrik – Charly & JuCo</h2>
+
+            <p>
+                <strong>Adresse:</strong><br>
+                Dr.-Karl-Renner-Ring 40<br>
+                8940 Liezen
+            </p>
+
+            <hr>
+
+            <p><strong>E-Mail Kontakt:</strong></p>
+
+            <p>
+                Cora Angerer<br>
+                <a href="mailto:angerer.cora@hak-liezen.at">angerer.cora@hak-liezen.at</a>
+            </p>
+
+            <p>
+                Carina Mayr<br>
+                <a href="mailto:mayr.carina@hak-liezen.at">mayr.carina@hak-liezen.at</a>
+            </p>
+
+            <p>
+                Julia Seebacher<br>
+                <a href="mailto:seebacher.julia@hak-liezen.at">seebacher.julia@hak-liezen.at</a>
+            </p>
+
+            <p class="kontakt-hinweis">
+                Wir freuen uns über eure Nachrichten!
+            </p>
+
+        </div>
+
+    </div>
+
+    <!-- Google Maps -->
+    <div class="map-container">
+        <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2692.01845887316!2d14.231627776263732!3d47.567429271186285!2m3!1f0!3f0!3f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x477173b4dbb1cb01%3A0xd9557417a34673a8!2sBundeshandelsakademie%20u%20Bundeshandelsschule!5e0!3m2!1sde!2sat"
+            allowfullscreen=""
+            loading="lazy">
+        </iframe>
+    </div>
+
+</section>
+
+</main>
+
+<section id="seite5">
+    <h1>Impressum</h1>
+
+    <p>
+
+    Angaben gemäß § 5 ECG und § 24 Mediengesetz<br>
+    <br>
+    <h4>Medieninhaberinnen und für den Inhalt verantwortlich:</h4>
+        Cora Angerer<br>
+        Carina Mayr<br>
+        Julia Seebacher<br>
+    <br>
+    <h4>Projektname:</h4> 
+        Charly&JuCo – Charly's Abenteuer<br>
+    <br>
+    <h4>Art der Website:</h4>
+        Schulprojekt im Rahmen des Unterrichts an der
+        Bundeshandelsakademie und Bundeshandelsschule Liezen (HAK Liezen)<br>
+    <br>
+    <h4>Schuladresse:</h4>
+        Dr.-Karl-Renner-Ring 40<br>
+        8940 Liezen<br>
+        Österreich<br>
+    <br>
+    <h4>Kontakt:</h4>
+        angerer.cora@hak-liezen.at<br>
+
+        mayr.carina@hak-liezen.at<br>
+
+        seebacher.julia@hak-liezen.at<br>
+    <br>
+    <h4>Unternehmensgegenstand:</h4>
+        Präsentation eines im Rahmen des Unterrichts entwickelten Kinderbuch- und Spieleprojekts.<br>
+    <br>
+    <h4> Social Media</h4>
+
+    Instagram: Charly&JuCo<br>
+    Facebook: Charly&JuCo<br>
+    <br>
+    Für die Inhalte auf unseren Social-Media-Seiten sind ebenfalls die oben genannten Personen verantwortlich.
+    Es gelten zusätzlich die Nutzungsbedingungen der jeweiligen Plattform.<br>
+
+    <h4>Haftungsausschluss</h4>
+
+    Alle Inhalte dieser Website wurden mit größter Sorgfalt erstellt.
+    Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte wird jedoch keine Gewähr übernommen.<br>
+    <br>
+    Diese Website dient ausschließlich schulischen Zwecken.
+    </p>
+
+</section>
+
+<section id="seite6">
+    <h1>Ein Winter mit Charly</h1>
+
+    <div class="intro-box">
+        <h2>Ein kurzer Einblick in unser Kinderbuch:</h2>
+
+        <p>
+           <br> Charly ist ein ziemlich frecher Ziegenbock, der so einiges anstellt und seine Freunde immer wieder in Gefahr bringt.
+           <br> Ob es ein gefährlicher Ausflug auf die Skipiste ist oder ein verbotener Nachtspaziergang – Charly lässt keine Gelegenheit aus, um sich zu amüsieren.
+            <br>Ob seine Freunde es schaffen, ihn zur Vernunft zu bringen?
+            <br> Es wird schwierig Charly zu Vernuft zu brig´ngen, aber seine Freunde geben nicht so leicht auf.
+            <br> Lustige Abenteuer warten auf euch, also auf was warten ihr? Buch kaufen und Geschichten lesen!
+        </p>
+    </div>
+
+    <div class="intro-box">
+        <h2>Unser Lieblingsbild aus dem Buch:</h2>
+
+        <p>
+         <img src="Winter_Fav.png" alt="Winter Lieblingsbild" style="width:80%; height:60%;">
+        </p>
+    </div>
+
+
+</section>
+
+<section id="seite7">
+    <h1>Ein Frühling mit Charly</h1>
+
+    <div class="intro-box">
+        <h2>Ein Blick in die Frühlingsgeschichte:</h2>
+
+        Auch im Frühling erwarten unseren Lieblingsziegenbock neue Herausforderungen.
+        <br>Diesmal sorgt nicht nur Charlys freche Art für Aufregung, sondern auch alte und neue Gesichter, die frischen Wind in die Freundesgruppe bringen.
+       <br> Ob Charly es schafft, mit der neuen Verantwortung richtig umzugehen?
+       <br> Viele Spannede Geschichten warten auf euch. Zu gibt es eine Osterüberraschung aber auch Erste Hilfe wird benötigt.
+       <br> Was alles Charly wieder erleben wird, verraten wir dir nicth aber sei gespannt.
+    
+    </div>
+
+  <div class="intro-box">
+        <h2>Unser Lieblingsbild aus dem Buch:</h2>
+
+        <p>
+         <img src="Frühling_Fav.png" alt="Frühling Lieblingsbild" style="width:80%; height:60%;">
+        </p>
+    </div>
+
+
+</section>
+
+<section id="seite8">
+    <h1>Merch zu Charly's Abenteuer</h1>
+
+    <div class="intro-box">
+        <h2>Unsere Merchartikel:</h2>
+
+        
+        Für alle kleinen und großen Fans von Charly gibt es tolle Merch-Produkte!
+        <br>Dazu gehören unter anderem Lesezeichen, Stifte und spannende Rätselhefte, die perfekt zu unseren Geschichten passen.
+        <br>So könnt ihr Charly überallhin mitnehmen und noch tiefer in seine Abenteuer eintauchen.
+        <br>Wir wollen euch damit zeigen was Charly's Welt alles kann und zu präsentieren hat.
+        <br>Es werden laufend neue Produkte erscheinen, also bleibt gespannt.
+ 
+    </div>
+
+  <div class="intro-box">
+        <h2>Unser Rätselheft erscheint bald:</h2>
+
+        <p>
+         <img src="Rätselheft.png" alt="Erscheint bald" style="width:50%; height:70%;">
+        </p>
+    </div>
+
+
+</section>
+
+
+<footer>
+    © 2026 – Charly's Abenteuer Website
+   <a onclick="showPage('seite5')">Impressum</a>
+</footer>
+
+<script>
+function showPage(id) {
+    const sections = document.querySelectorAll('section');
+    sections.forEach(sec => sec.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    window.scrollTo(0, 0);
+}
+</script>
+
+</script>
+
+</body>
+</html>
