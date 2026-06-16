@@ -93,9 +93,8 @@ footer {
     }
 }
 
+/*logo*/
 
-
-/* LOGO */
 .logo {
     position: fixed;
     top: 15px;
@@ -282,9 +281,9 @@ img {
         padding: 20px;
     }
 
-     .logo {
-        width: 70px;
-        height: auto;   /* statt 60px */
+    .logo {
+        width: 60px;
+        height: 60px;
         top: 10px;
         left: 10px;
     }
@@ -476,7 +475,7 @@ main {
 
 <!-- LOGO -->
 <a onclick="showPage('seite1')">
-  <img src="Charly & JuCo Logo weiß.png" alt="Logo" class="logo">
+  <img src="Charly & JuCo Logo weiß.png" alt="Logo" class="logo" style="width:10%; height:10%;">
 </a>
 
 
@@ -616,7 +615,20 @@ main {
             <p><strong>Lieblingsfach:</strong>Chemie</p>
             <p><strong>Lebensmotto:</strong> It's nice to be important,<br> but more important to be nice.</p>
         </div>
+    </div>
 
+    <div class="steckbrief-card">
+        <img src="Mayr_Carina.jpg" alt="Carina">
+        <h3>Carina Mayr</h3>
+        <div class="steckbrief-info">
+            <p><strong>Alter:</strong> 19</p>
+            <p><strong>Aufgabe:</strong> Programmierung</p>
+            <p><strong>Lieblingsfarbe:</strong> Grün</p>
+            <p><strong>Hobby:</strong> Lesen, Freunde treffen, <br>E-Bass spielen</p>
+            <p><strong>Lieblingsfach:</strong> Englisch</p>
+            <p><strong>Lebensmotto:</strong> Aufgeben ist keine Option!</p>
+        </div>
+    </div>
 
     <div class="steckbrief-card">
         <img src="Seebacher_Julia.jpg" alt="Julia">
@@ -651,6 +663,15 @@ Sportlich, mutig, hilfsbereit – immer ich selbst.-->
 
 <div class="produkte-grid">
 
+  <!-- Spiel -->
+  <div class="produkt-card">
+  <img src="Cover.png" alt="Charly's Jump and Run">
+  <h2>Charly's Abenteuer</h2>
+  <p>
+    Ein Spiel das jedem Kind Freude bereitet und das ganz noch in Verbindung
+    mit einem Kinderbuch – das muss man doch mögen. Charly wird nun auch viele
+    Abenteuer online erleben und viel Spaß mit euch haben.
+  </p>
 
  <button onclick="showPage('seite1')">
   Alle weiteren Infos <br> auf der Startseite 
@@ -904,4 +925,3 @@ function showPage(id) {
 
 </body>
 </html>
-
